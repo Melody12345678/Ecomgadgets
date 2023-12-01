@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #cart-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .cart-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item p {
+            margin: 0;
+        }
+
+        .cart-item .item-name {
+            font-weight: bold;
+        }
+
+        .cart-item .item-price {
+            color: #e44d26;
+        }
+
+        .delete-button {
+            background-color: #e44d26;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .delete-button:hover {
+            background-color: #333;
+        }
+
+        a {
+            display: block;
+            max-width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #e44d26;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #333;
+        }
+
+        #proceed-to-checkout[style='display: none;'] {
+                pointer-events: none;
+                background-color: #ccc;
+                cursor: not-allowed;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="cart-container">
+        <div id="cart-items"></div>
+        <a href="checkout.html" id="proceed-to-checkout" style="display: none;">Proceed to Checkout</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load cart items from localStorage
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Display cart items in the cart page
+            const cartContainer = document.getElementById('cart-items');
+            const proceedToCheckoutLink = document.getElementById('proceed-to-checkout');
+
+            if (cartItems.length > 0) {
+                updateCartDisplay();
+                proceedToCheckoutLink.style.display = 'block';
+            } else {
+                cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+                proceedToCheckoutLink.style.display = 'none';
+            }
+
+            function createCartItemDiv(item, index) {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `<p class="item-name">${item.name}</p>
+                                     <p class="item-price">$${item.price}</p>
+                                     <button class="delete-button" onclick="deleteItem(${index})">Delete</button>`;
+                return itemDiv;
+            }
+
+            function deleteItem(index) {
+                    cartItems.splice(index, 1);
+                    localStorage.setItem('cart', JSON.stringify(cartItems));
+                    updateCartDisplay();
+                    proceedToCheckoutLink.style.display = cartItems.length > 0 ? 'block' : 'none';
+            }
+
+
+            function updateCartDisplay() {
+                cartContainer.innerHTML = ''; // Clear existing items
+                if (cartItems.length > 0) {
+                    cartItems.forEach((item, index) => {
+                        const itemDiv = createCartItemDiv(item, index);
+                        cartContainer.appendChild(itemDiv);
+                    });
+                } else {
+                    cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

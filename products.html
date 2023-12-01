@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Product Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            }
+
+        .categories {
+                
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            }
+
+            .categories h2 {
+                margin-bottom: 10px;
+            }
+
+            .categories ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .categories li {
+                display: inline-block;
+                margin-right: 10px;
+            }
+
+            .categories a {
+                text-decoration: none;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 4px;
+                transition: background-color 0.3s;
+            }
+
+            .categories a:hover {
+                background-color: #555;
+            }
+
+            .product-container {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                padding: 20px;
+            }
+
+            .product {
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 20px;
+                margin: 20px;
+                width: 300px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+
+            h2 {
+                color: #333;
+            }
+
+            .price {
+                color: #007bff;
+                font-weight: bold;
+            }
+
+            button {
+                background-color: #4caf50;
+                color: white;
+                padding: 8px 16px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+            /* Existing styles */
+
+            .products-heading {
+                text-align: center;
+                color: #333;
+                font-size: 2em;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+
+    </style>
+</head>
+
+<body>
+    <section id="products-container" class="product-container">
+        <h2 class="products-heading">Discover Amazing Products</h2>
+        <a href="cart.html">View Cart</a>
+
+
+    <section class="product-container">
+        <div class="product" onclick="addToCart('Laptop', 799.99)" id="1">
+            <img src="laptop.jpeg" alt="Laptop">
+            <h3>Laptop</h3>
+            <p>$799.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-Laptop" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('Laptop')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-Laptop">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('Laptop')">View Ratings</button>
+                
+                <button class="buy-button" onclick="addToCart('Laptop', 799.00)">Buy Now</button>
+            </div>
+        </div>
+        
+        <div class="product" onclick="addToCart('Camera', 599.99)" id="2">
+            <img src="camera.jpeg" alt="Camera">
+            <h3>Camera</h3>
+            <p>$599.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-Camera" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('Camera')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-Camera">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('Camera')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('Camera', 599.00)">Buy Now</button>
+            </div>
+        </div>
+
+
+
+        <div class="product" onclick="addToCart('Earphones', 199.99)" id="3">
+            <img src="earphones.jpg" alt="Earphones">
+            <h3>Earphones</h3>
+            <p>$199.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-Earphones" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('Earphones')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-Earphones">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('Earphones')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('Earphones', 199.00)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product" onclick="addToCart('Kindle', 99.99)" id="4">
+            <img src="kindle.jpeg" alt="Kindle">
+            <h3>Kindle</h3>
+            <p>$99.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-Kindle" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('Kindle')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-Kindle">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('Kindle')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('Kindle', 99.00)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product" onclick="addToCart('Loudspeakers', 499.99)" id="5">
+            <img src="loudspeakers.jpeg" alt="Loudspeakers">
+            <h3>Loudspeakers</h3>
+            <p>$499.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-Loudspeakers" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('Loudspeakers')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-Loudspeakers">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('Loudspeakers')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('Loudspeakers', 499.00)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product" onclick="addToCart('Router', 399.99)" id="6">
+            <img src="router.jpeg" alt="Router">
+            <h3>Router</h3>
+            <p>$399.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-Router" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('Router')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-Router">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('Router')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('Router', 399.00)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product" onclick="addToCart('Smartphone', 199.99)" id="7">
+            <img src="smartphone.jpeg" alt="Smartphone">
+            <h3>Smartphone</h3>
+            <p>$199.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-Smartphone" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('Smartphone')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-Smartphone">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('Smartphone')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('Smartphone', 199.00)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product" onclick="addToCart('Smartwatch', 149.99)" id="8">
+            <img src="smartwatch.jpeg" alt="Smartwatch">
+            <h3>Smartwatch</h3>
+            <p>$149.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-Smartwatch" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('Smartwatch')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-Smartwatch">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('Smartwatch')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('Smartwatch', 149.00)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product" onclick="addToCart('Tablet', 349.99)" id="9">
+            <img src="tablet.jpeg" alt="Tablet">
+            <h3>Tablet</h3>
+            <p>$349.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-Tablet" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('Tablet')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-Tablet">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('Tablet')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('Tablet', 349.00)">Buy Now</button>
+            </div>
+        </div>
+        <div class="product" onclick="addToCart('USBdrive', 49.99)" id="10">
+            <img src="usbdrive.jpeg" alt="USBdrive">
+            <h3>USBdrive</h3>
+            <p>$49.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-USBdrive" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('USBdrive')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-USBdrive">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('USBdrive')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('USBdrive', 49.00)">Buy Now</button>
+            </div>
+        </div>
+
+        <div class="product" onclick="addToCart('PS5', 55.99)" id="11">
+            <img src="ps5.jpeg" alt="PS5">
+            <h3>PS5</h3>
+            <p>$55.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-PS5" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('PS5')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-PS5">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('PS5')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('PS5', 55.00)">Buy Now</button>
+            </div>
+        </div>
+
+        <div class="product" onclick="addToCart('Headphones', 66.99)" id="12">
+            <img src="Headphones.jpg" alt="Headphones">
+            <h3>Headphones</h3>
+            <p>$66.99</p>
+            <div class="product-ratings">
+                <label for="rating">Rate this product:</label>
+                <select id="rating-Headphones" name="rating">
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+                <button onclick="submitRating('Headphones')">Submit Rating</button>
+                <p class="average-rating" aria-live="polite">Average Rating: <span
+                        id="average-rating-Headphones">0.0</span></p>
+                <button class="view-ratings-btn" onclick="viewRatings('Headphones')">View Ratings</button>
+                <button class="buy-button" onclick="addToCart('Headphones', 66.99)">Buy Now</button>
+            </div>
+        </div>
+        <!-- Add ratings, reviews, and other details here -->
+        <!-- Repeat the structure for other products -->
+    </section>
+        <script>
+
+            
+         
+            function submitRating(productName) {
+                // Add your logic to submit the rating for the specified product
+                console.log(`Rating submitted for ${productName}`);
+            }
+
+            function viewRatings(productName) {
+                // Add your logic to view the ratings for the specified product
+                console.log(`Viewing ratings for ${productName}`);
+            }
+            // Array of product data
+            const products = [
+        
+                    { id: 1, name: 'Laptop', price: 799.99, image: 'laptop.jpeg' },
+                    { id: 2, name: 'Camera', price: 599.99, image: 'camera.jpeg' },
+                    { id: 3, name: 'Earphones', price: 199.99, image: 'earphones.jpg' },
+                    { id: 4, name: 'Kindle', price: 799.99, image: 'kindle.jpeg' },
+                    { id: 5, name: 'Loudspeakers', price: 499.99, image: 'loudspeakers.jpeg' },
+                    { id: 6, name: 'Router', price: 399.99, image: 'router.jpeg' },
+                    { id: 7, name: 'Smartphone', price: 199.99, image: 'smartphone.jpeg' },
+                    { id: 8, name: 'Smartwatch', price: 149.99, image: 'smartwatch.jpeg' },
+                    { id: 9, name: 'Tablet', price: 349.99, image: 'tablet.jpeg' },
+                    { id: 10, name: 'USBdrive', price: 49.99, image: 'usbdrive.jpeg' },
+                    { id: 11, name: 'PS5', price: 55.99, image: 'ps5.jpeg' },
+                    { id: 12, name: 'Headphones', price: 66.99, image: 'Headphones.jpg' },
+
+        ];      
+            // Function to create a product element
+            function createProductElement(product) {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+
+                // Product image
+                const productImage = document.createElement('img');
+                productImage.src = product.image;
+                productDiv.appendChild(productImage);
+
+                // Product details
+                const productDetails = document.createElement('div');
+                productDetails.classList.add('product-details');
+
+                // Product name
+                const productName = document.createElement('h3');
+                productName.textContent = product.name;
+                productDetails.appendChild(productName);
+
+                // Product price
+                const productPrice = document.createElement('p');
+                productPrice.textContent = `$${product.price.toFixed(2)}`;
+                productDetails.appendChild(productPrice);
+
+                // Buy button
+                const buyButton = document.createElement('button');
+                buyButton.classList.add('buy-button');
+                buyButton.textContent = 'Buy Now';
+                buyButton.onclick = function () {
+                    addToCart(product.id, product.name, product.price);
+                };
+                productDetails.appendChild(buyButton);
+
+                // Append product details to the product div
+                productDiv.appendChild(productDetails);
+
+                return productDiv;
+            }
+
+            // Function to add product elements to the page
+            function displayProducts() {
+                const productsContainer = document.getElementById('products-container');
+                products.forEach(product => {
+                    const productElement = createProductElement(product);
+                    productsContainer.appendChild(productElement);
+                });
+            }
+
+            // Call the function to display products
+            displayProducts();
+
+            // Function to handle the "Buy Now" button click
+            function addToCart(productId, productName, productPrice) {
+                // Use your existing addToCart function
+                alert(`Product added to cart!\nID: ${productId}\nName: ${productName}\nPrice: ${productPrice}`);
+            }
+
+                    document.addEventListener('DOMContentLoaded',function () {
+            // Load cart items from localStorage
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            
+             
+            function addToCart(productId, productName, productPrice) {
+            // Use your existing addToCart function or add your cart logic here
+            alert(`Product added to cart!\nID: ${productId}\nName: ${productName}\nPrice: ${productPrice}`);
+            }
+        });
+
+      
+        <div id="reviews">
+            <h2>Customer Reviews</h2>
+              <div id="user-reviews"></div>
+              <div id="add-review">
+            <h3>Add Your Review</h3>
+            <textarea id="reviewText" placeholder="Write your review..."></textarea>
+            <button onclick="addReview()">Submit Review</button>
+        </div>
+    </div>
+        </script>
+        
+    
+
+      
+    
+
+
+
+</body>
+
+</html>
